@@ -1196,7 +1196,7 @@ def _quantiles_per_key(x, key, num_buckets, epsilon, name=None):
         epsilon,
         bucket_dtype.as_numpy_dtype,
         always_return_num_quantiles=True,
-        output_shape=(None, None))
+        output_shape=(None,))
     key, bucket_boundaries = _apply_cacheable_combiner_per_key(combiner, key, x)
     return key, bucket_boundaries
 

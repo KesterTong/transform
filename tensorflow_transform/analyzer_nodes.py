@@ -325,8 +325,10 @@ class CacheableCombinePerKeyMerge(CacheableCombineMerge):
   @property
   def output_tensor_infos(self):
     # Returns a key vocab and one output per combiner output.
-    return [TensorInfo(tf.string, [None], False)
-           ] + self.combiner.output_tensor_infos()
+    return [TensorInfo(tf.string, (None,), False)] + [
+        TensorInfo(info.dtype, (None,) + info.shape, info.is_asset_filepath)
+        for info in self.combiner.output_tensor_infos()
+    ]
 
 
 class VocabularyAccumulate(

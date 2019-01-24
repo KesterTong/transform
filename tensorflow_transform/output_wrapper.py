@@ -45,6 +45,7 @@ class TFTransformOutput(object):
 
     # Lazily constructed properties.
     self._transformed_metadata = None
+    self._raw_metadata = None
 
   @property
   def transformed_metadata(self):

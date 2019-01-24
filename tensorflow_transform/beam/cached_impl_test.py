@@ -28,7 +28,7 @@ from tensorflow_transform import nodes
 import tensorflow_transform.beam as tft_beam
 from tensorflow_transform.beam import analysis_graph_builder
 from tensorflow_transform.beam import impl as beam_impl
-from tensorflow_transform.google import test_case
+from tensorflow_transform import test_case
 from tensorflow_transform.tf_metadata import dataset_metadata
 from tensorflow_transform.tf_metadata import dataset_schema
 
@@ -304,7 +304,7 @@ _OPTIMIZE_TRAVERSAL_TEST_CASES = [
 ]
 
 
-class CachedImplTest(test_case.TransformTestCaseInternal):
+class CachedImplTest(test_case.TransformTestCase):
 
   def setUp(self):
     super(CachedImplTest, self).setUp()

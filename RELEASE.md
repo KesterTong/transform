@@ -13,27 +13,29 @@
   instead of `tf.Session.run` for improved performance.
 
 ## Bug Fixes and Other Changes
-* `tft.vocabulary` and `tft.compute_and_apply_vocabulary` now support filtering
-  based on adjusted mutual information when `use_adjusetd_mutual_info` is set to
-  True.
-* `tft.vocabulary` and `tft.compute_and_apply_vocabulary` now takes
-  regularization term 'min_diff_from_avg' that adjusts mutual information to
-  zero whenever the difference between count of the feature with any label and
-  its expected count is lower than the threshold.
-* Added an option to `tft.vocabulary` and `tft.compute_and_apply_vocabulary`
-  to compute a coverage vocabulary, using the new `coverage_top_k`,
-  `coverage_frequency_threshold` and `key_fn` parameters.
-* Added `tft.ptransform_analyzer` for advanced use cases.
-* Modified `QuantilesCombiner` to use `tf.Session.make_callable` instead of
-  `tf.Session.run` for improved performance.
-* ExampleProtoCoder now also supports non-serialized Example representations.
-* `tft.tfidf` now accepts a scalar Tensor as `vocab_size`.
-* `assertItemsEqual` in unit tests are replaced by `assertCountEqual`.
-* `NumPyCombiner` now outputs TF dtypes in output_tensor_infos instead of numpy
-  dtypes.
-* Adds function `tft.apply_pyfunc` that provides limited support for
-  `tf.pyfunc`. Note that this is incompatible with serving. See documentation
-  for more details.
+
+*   `tft.vocabulary` and `tft.compute_and_apply_vocabulary` now support
+    filtering based on adjusted mutual information when
+    `use_adjusetd_mutual_info` is set to True.
+*   `tft.vocabulary` and `tft.compute_and_apply_vocabulary` now takes
+    regularization term 'min_diff_from_avg' that adjusts mutual information to
+    zero whenever the difference between count of the feature with any label and
+    its expected count is lower than the threshold.
+*   Added an option to `tft.vocabulary` and `tft.compute_and_apply_vocabulary`
+    to compute a coverage vocabulary, using the new `coverage_top_k`,
+    `coverage_frequency_threshold` and `key_fn` parameters.
+*   Added `tft.ptransform_analyzer` for advanced use cases.
+*   Modified `QuantilesCombiner` to use `tf.Session.make_callable` instead of
+    `tf.Session.run` for improved performance.
+*   ExampleProtoCoder now also supports non-serialized Example representations.
+*   `tft.tfidf` now accepts a scalar Tensor as `vocab_size`.
+*   `assertItemsEqual` in unit tests are replaced by `assertCountEqual`.
+*   `NumPyCombiner` now outputs TF dtypes in output_tensor_infos instead of
+    numpy dtypes.
+*   Adds function `tft.apply_pyfunc` that provides limited support for
+    `tf.pyfunc`. Note that this is incompatible with serving. See documentation
+    for more details.
+*   `CombinePerKey` now adds a dimension for the key.
 
 ## Breaking changes
 * `ColumnSchema` and related classes (`Domain`, `Axis` and

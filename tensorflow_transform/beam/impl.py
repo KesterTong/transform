@@ -103,7 +103,7 @@ from tensorflow_transform.saved import saved_transform_io
 from tensorflow_transform.tf_metadata import dataset_metadata
 from tensorflow_transform.tf_metadata import dataset_schema
 
-_DATASET_ELEMENT_TYPE = Dict[six.text_type,
+_DATASET_ELEMENT_TYPE = Dict[Any,  # Any -> six.text_type?
                              Union[common.PRIMITIVE_TYPE,
                                    # Arbitrarily-nested lists are allowed.
                                    List[Any], np.generic, np.ndarray]]

@@ -25,6 +25,7 @@ import os
 import apache_beam as beam
 
 from apache_beam.transforms.ptransform import ptransform_fn
+from apache_beam.typehints import Any
 from apache_beam.typehints import KV
 from apache_beam.typehints import Tuple
 from apache_beam.typehints import Union
@@ -110,7 +111,7 @@ def _ApplyFrequencyThresholdAndTopK(  # pylint: disable=invalid-name
 
 @common.register_ptransform(analyzer_nodes.VocabularyAccumulate)
 @beam.typehints.with_input_types(Tuple[np.ndarray, ...])
-@beam.typehints.with_output_types(KV[np.str, Union[int, float]])
+@beam.typehints.with_output_types(KV[Any, Union[int, float]])  # Any -> np.str?
 class VocabularyAccumulateImpl(beam.PTransform):
   """Accumulates the unique elements in a PCollection of batches."""
 
@@ -152,7 +153,7 @@ class VocabularyAccumulateImpl(beam.PTransform):
 
 @common.register_ptransform(analyzer_nodes.VocabularyMerge)
 @beam.typehints.with_input_types(KV[np.str, Union[int, float]])
-@beam.typehints.with_output_types(KV[Union[int, float], np.str])
+@beam.typehints.with_output_types(KV[Union[int, float], Any])  # Any -> np.str?
 class VocabularyMergeImpl(beam.PTransform):
   """Merges vocabulary accumulators of (word, num) pairs."""
 
@@ -181,7 +182,7 @@ class VocabularyMergeImpl(beam.PTransform):
 
 @common.register_ptransform(analyzer_nodes.VocabularyOrderAndFilter)
 @beam.typehints.with_input_types(KV[Union[int, float], np.str])
-@beam.typehints.with_output_types(KV[Union[int, float], np.str])
+@beam.typehints.with_output_types(KV[Union[int, float], Any])  # Any -> np.str?
 class VocabularyOrderAndFilterImpl(beam.PTransform):
   """Order, filters and writes the computed vocabulary file."""
 
